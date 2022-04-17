@@ -1,5 +1,6 @@
 package com.example.mynoticeboard.service;
 
+import com.example.mynoticeboard.dto.PostDto;
 import com.example.mynoticeboard.entity.Post;
 import com.example.mynoticeboard.repository.PostRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -26,4 +27,14 @@ public class PostService {
     public Post getOnePost(Long id) {
         return postRepository.findById(id).orElse(null);
     }
+
+    public Post create(PostDto dto) {
+        Post post = dto.toEntity();
+        //post에는 id가 있으면 안됨
+        if ( post.getId() != null){
+            return null;
+        }
+        return postRepository.save(post);
+    }
+
 }

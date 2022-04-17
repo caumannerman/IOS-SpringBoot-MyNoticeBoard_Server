@@ -1,5 +1,6 @@
 package com.example.mynoticeboard.controller;
 
+import com.example.mynoticeboard.dto.PostDto;
 import com.example.mynoticeboard.entity.Post;
 import com.example.mynoticeboard.service.PostService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,9 +8,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +38,13 @@ public class PostApiController {
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
+    //새 게시글 등록
+    @PostMapping("/api/posts/")
+    public ResponseEntity<Post> create(@RequestBody PostDto dto){
+        Post created = postService.create(dto);
+        return ( created != null) ?
+            ResponseEntity.status(HttpStatus.OK).body(created) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
 
 }
