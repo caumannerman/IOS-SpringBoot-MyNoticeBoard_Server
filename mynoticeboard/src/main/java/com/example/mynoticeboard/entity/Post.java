@@ -1,10 +1,7 @@
 package com.example.mynoticeboard.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @AllArgsConstructor
+@Getter
 public class Post {
 
     @Id
@@ -33,5 +31,5 @@ public class Post {
     private String user_nickname;
 
     @Column
-    private String hasttag;
+    private String hashtag;
 }

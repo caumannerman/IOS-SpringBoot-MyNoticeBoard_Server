@@ -2,15 +2,13 @@ package com.example.mynoticeboard.dto;
 
 
 import com.example.mynoticeboard.entity.Post;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @ToString
+@Setter
 public class PostDto {
 
     private Long id;
@@ -21,7 +19,7 @@ public class PostDto {
     private String hashtag;
 
     // dto를 Entity로
-    public Post toPost() {
+    public Post toEntity() {
         return new Post(id, title, content, time, user_nickname, hashtag);
     }
 
