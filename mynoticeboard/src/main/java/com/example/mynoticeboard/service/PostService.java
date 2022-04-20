@@ -6,6 +6,7 @@ import com.example.mynoticeboard.repository.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class PostService {
         return postRepository.findById(id).orElse(null);
     }
 
+    // Post 생성
+    @Transactional
     public Post create(PostDto dto) {
         Post post = dto.toEntity();
         //post에는 id가 있으면 안됨
@@ -35,6 +38,17 @@ public class PostService {
             return null;
         }
         return postRepository.save(post);
+    }
+
+    // Post 삭제
+    @Transactional
+    public Post delete(Long id) {
+        //해당 id를 가진 Post가 있는지 확인
+       Post target = postRepository.findById(id).orElse(null);
+       //댓글 삭제
+        postRepository.delete(target);
+
+        return target;
     }
 
 }

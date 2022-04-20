@@ -39,12 +39,25 @@ public class PostApiController {
     }
 
     //새 게시글 등록
-    @PostMapping("/api/posts/")
+    @PostMapping("/api/posts")
     public ResponseEntity<Post> create(@RequestBody PostDto dto){
         Post created = postService.create(dto);
         return ( created != null) ?
             ResponseEntity.status(HttpStatus.OK).body(created) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
+    // 게시글 삭제
+    @DeleteMapping("/api/posts/{id}")
+    public ResponseEntity<Post> delete(@PathVariable Long id){
+        Post deleted = postService.delete(id);
+
+        return (deleted != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(deleted) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    }
+
+
+    // 게시글 수정
 
 }
