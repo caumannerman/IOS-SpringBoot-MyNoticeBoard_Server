@@ -1,6 +1,7 @@
 package com.example.mynoticeboard.entity;
 
 
+import com.example.mynoticeboard.dto.PostDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,4 +33,15 @@ public class Post {
 
     @Column
     private String hashtag;
+
+    public void patch(PostDto dto) {
+        if (dto.getTitle() != null)
+            this.title = dto.getTitle();
+        if (dto.getContent() != null)
+            this.content = dto.getTitle();
+        if (dto.getHashtag() != null){
+            this.hashtag = dto.getHashtag();
+        }
+
+    }
 }

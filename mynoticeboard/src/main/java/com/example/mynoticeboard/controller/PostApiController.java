@@ -59,5 +59,15 @@ public class PostApiController {
 
 
     // 게시글 수정
+    @PatchMapping("/api/posts/{id}")
+    public ResponseEntity<Post> update(@RequestBody PostDto dto, @PathVariable Long id){
+        Post updated = postService.update(dto, id);
+
+        //결과 응답
+        return (updated != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(updated) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+    }
 
 }

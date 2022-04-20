@@ -51,4 +51,19 @@ public class PostService {
         return target;
     }
 
+    // Post 수정
+    @Transactional
+    public Post update(PostDto dto, Long id) {
+        Post target = postRepository.findById(id).orElse(null);
+
+        if ( target == null || id != dto.getId()){
+            log.info("해당 게시물이 존재하지 않습니다! id:{}, post: {}", id, dto.toString());
+            return null;
+        }
+        target.patch(dto);
+
+        Post updated = postRepository.save(target);
+
+        return updated;
+    }
 }
