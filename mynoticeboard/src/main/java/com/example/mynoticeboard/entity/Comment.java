@@ -1,6 +1,7 @@
 package com.example.mynoticeboard.entity;
 
 
+import com.example.mynoticeboard.dto.CommentDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Comment {
     private Post post;
 
     @Column
-    private String nickname;
+    private String user_nickname;
 
     @Column
     private String content;
@@ -32,5 +33,15 @@ public class Comment {
 
 //    @Column
 //    private Boolean isSecret;
+
+    public CommentDto EntityToDto(){
+        return new CommentDto(
+                this.getId(),
+                this.getPost().getId(),
+                this.getUser_nickname(),
+                this.getContent(),
+                this.getTime()
+        );
+    }
 
 }

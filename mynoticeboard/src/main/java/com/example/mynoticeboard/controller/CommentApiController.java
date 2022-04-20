@@ -1,5 +1,6 @@
 package com.example.mynoticeboard.controller;
 
+import com.example.mynoticeboard.dto.CommentDto;
 import com.example.mynoticeboard.entity.Comment;
 import com.example.mynoticeboard.service.CommentService;
 
@@ -20,10 +21,10 @@ public class CommentApiController {
 
     //게시글에 달린 댓글 전체 조회
     @GetMapping("/api/posts/{postId}/comments")
-    public ResponseEntity<List<Comment>> getAllComments(@PathVariable Long postId){
-        List<Comment> comments = commentService.getAllComments(postId);
+    public ResponseEntity<List<CommentDto>> getAllComments(@PathVariable Long postId){
+        List<CommentDto> dtos = commentService.getAllComments(postId);
 
-        return ResponseEntity.status(HttpStatus.OK).body(comments);
+        return ResponseEntity.status(HttpStatus.OK).body(dtos);
     }
 
 

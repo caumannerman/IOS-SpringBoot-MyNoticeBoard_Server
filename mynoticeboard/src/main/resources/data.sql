@@ -8,14 +8,14 @@ INSERT INTO post(id, title, content, time, user_nickname, hashtag) values ( 7, '
 
 
 --comment 더미 데이터
-INSERT INTO comment(id, post, nickname, content, time) values (1, 1, '양준식', '1등', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (2, 1, '박중필', '2등~', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (3, 1, '이승준', '3등이요', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (1, 1, '양준식', '1등', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (2, 1, '박중필', '2등~', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (3, 1, '이승준', '3등이요', '20:16');
 
-INSERT INTO comment(id, post, nickname, content, time) values (4, 3, '양준식', '1등이네', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (5, 3, '이승준', '하하', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (6, 3, '박중필', '호호', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (4, 3, '양준식', '1등이네', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (5, 3, '이승준', '하하', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (6, 3, '박중필', '호호', '20:16');
 
-INSERT INTO comment(id, post, nickname, content, time) values (7, 5, '진성민', '운동 ㄱ', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (8, 5, '박승수', '운동 안 해', '20:16');
-INSERT INTO comment(id, post, nickname, content, time) values (9, 5, '이승준', '운동 좀 해라', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (7, 5, '진성민', '운동 ㄱ', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (8, 5, '박승수', '운동 안 해', '20:16');
+INSERT INTO comment(id, post, user_nickname, content, time) values (9, 5, '이승준', '운동 좀 해라', '20:16');
