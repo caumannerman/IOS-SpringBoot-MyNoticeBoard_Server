@@ -26,4 +26,12 @@ public class CommentService {
 
         return dtos;
     }
+
+    public CommentDto delete(Long id) {
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("댓글 삭제 실패! 대상이 없습니다ㅏ."));
+
+        commentRepository.delete(comment);
+
+        return comment.EntityToDto();
+    }
 }
