@@ -60,6 +60,7 @@ public class CommentService {
         return created.EntityToDto();
     }
 
+    @Transactional
     public CommentDto update(Long id, CommentDto dto) {
         //댓글 조회 및 예외 발생
         Comment target = commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("댓글 수정 실패! 대상 댓글이 없습니다."));
