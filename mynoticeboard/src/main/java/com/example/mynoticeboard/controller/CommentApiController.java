@@ -7,10 +7,7 @@ import com.example.mynoticeboard.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +33,17 @@ public class CommentApiController {
 
         //결과 응답
         return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
+    }
+
+    //댓글 생성
+    @PostMapping("/api/posts/{postId}/comments")
+    public ResponseEntity<CommentDto> create(@PathVariable Long postId, @RequestBody CommentDto dto){
+        // 서비스에게 위임
+        CommentDto createdDto = commentService.create(postId, dto);
+
+        //결과 응답
+        return ResponseEntity.status(HttpStatus.OK).body(createdDto);
+
     }
 
 
